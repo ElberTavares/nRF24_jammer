@@ -1,44 +1,60 @@
-#include "options.h"
+#ifndef OPTIONS_H
+#define OPTIONS_H
+#define MAX_APS 60  // maximum number of Wi-Fi access points
 
-//  Changeable parameters
-GButton butt1(25);
-GButton buttNext(26);
-GButton buttPrevious(27);
-const char *default_ssid = "jammer";
-const char *default_password = "W0rthlessS0ul";
-String Version_Number = "V3.0.0";
-String Version_Name = "Flexible";
+#include "Update.h"
+#include "EEPROM.h"
+#include "Adafruit_GFX.h"
+#include "Adafruit_SSD1306.h"
+#include "GyverButton.h"
+#include "WiFi.h"
+#include "DNSServer.h"
+#include "WebServer.h"
+#include "RF24.h"
 
-//  Unchangeable parameters
-uint8_t SCREEN_WIDTH = 128;
-uint8_t SCREEN_HEIGHT = 64;
-int8_t OLED_RESET = -1;
-size_t EEPROM_SIZE = 512;
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
-SPIClass *hp = nullptr;
-int menu_number = 0;
-int bluetooth_jam_method;
-int drone_jam_method;
-int display_setting;
-int wifi_jam_method;
-int nrf_pa;
-int Separate_or_together;
-int misc_jam_method;
-int logo;
-int access_point;
-int buttons;
-int channel1 = 0;
-int channel2 = 0;
-int flag = 0;
-bool hspi = false;
-byte bluetooth_channels[] = {32, 34, 46, 48, 50, 52, 0,  1,  2,  4, 6,
-                             8,  22, 24, 26, 28, 30, 74, 76, 78, 80};
-byte ble_channels[] = {2, 26, 80};
-const char jam_text[] = "xxxxxxxxxxxxxxxx";
-RF24 *radios[30];
-int ce_pins[30];
-int csn_pins[30];
-int WiFiScanChannels[14];
-int nrf24_count;
-WebServer server(80);
-DNSServer dnsServer;
+extern GButton butt1;
+extern GButton buttNext;
+extern GButton buttPrevious;
+extern const char *default_ssid;
+extern const char *default_password;
+extern String Version_Number;
+extern String Version_Name;
+
+extern uint8_t SCREEN_WIDTH;
+extern uint8_t SCREEN_HEIGHT;
+extern int8_t OLED_RESET;
+extern size_t EEPROM_SIZE;
+extern Adafruit_SSD1306 display;
+extern SPIClass *hp;
+extern int menu_number;
+extern int bluetooth_jam_method;
+extern int drone_jam_method;
+extern int display_setting;
+extern int wifi_jam_method;
+extern int nrf_pa;
+extern int Separate_or_together;
+extern int misc_jam_method;
+extern int logo;
+extern int access_point;
+extern int buttons;
+extern int channel1;
+extern int channel2;
+extern int flag;
+extern bool hspi;
+extern byte bluetooth_channels[];
+extern byte ble_channels[];
+extern const char jam_text[17];
+extern RF24 *radios[30];
+extern int ce_pins[30];
+extern int csn_pins[30];
+extern int WiFiScanChannels[14];
+extern int nrf24_count;
+extern WebServer server;
+extern DNSServer dnsServer;
+
+extern String wifi_ssid[MAX_APS];   // SSIDs found in last scan
+extern uint8_t wifi_channels_array[MAX_APS]; // Channels of the APs
+extern int wifi_ap_count;           // Number of APs found
+extern int max_aps_web;             // Max APs to display (configurable via web)
+
+#endif
