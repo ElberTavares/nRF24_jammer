@@ -8,6 +8,7 @@ extern const unsigned char bitmap_access_point[] PROGMEM;
 extern const unsigned char bitmap_pls_reboot[] PROGMEM;
 extern const unsigned char bitmap_wifi_select[] PROGMEM;
 extern const unsigned char bitmap_wifi_all[] PROGMEM;
+extern const unsigned char bitmap_wifi_list_ssid[] PROGMEM;
 extern const unsigned char bitmap_ble_jam[] PROGMEM;
 extern const unsigned char bitmap_misc_jammer[] PROGMEM;
 extern const unsigned char bitmap_ble_jammer[] PROGMEM;
