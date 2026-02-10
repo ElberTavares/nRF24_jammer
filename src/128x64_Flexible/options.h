@@ -1,5 +1,6 @@
 #ifndef OPTIONS_H
 #define OPTIONS_H
+#define MAX_APS 60  // maximum number of Wi-Fi access points
 
 #include "Update.h"
 #include "EEPROM.h"
@@ -50,5 +51,10 @@ extern int WiFiScanChannels[14];
 extern int nrf24_count;
 extern WebServer server;
 extern DNSServer dnsServer;
+
+extern String wifi_ssid[MAX_APS];   // SSIDs found in last scan
+extern uint8_t wifi_channels_array[MAX_APS]; // Channels of the APs
+extern int wifi_ap_count;           // Number of APs found
+extern int max_aps_web;             // Max APs to display (configurable via web)
 
 #endif
